@@ -48,7 +48,7 @@ sudo apt install -y pulseaudio alsa-utils pavucontrol volumeicon-alsa pamixer
 sudo apt install -y lxappearance
 
 # Browser Installation (eg. chromium)
-sudo apt install -y firefox-esr
+sudo apt install -y firefox-esr qbittorrent
 
 # Desktop background browser/handler
 # feh --bg-fill /path/to/directory
