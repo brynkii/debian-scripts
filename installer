@@ -98,7 +98,7 @@ curl -sS https://starship.rs/install.sh | sh
 bash ~/debian-scripts/resources/nerdfonts.sh
 bash ~/debian-scripts/fastfetch.sh
 
-# \cp ~/debian-scripts/resources/.bashrc ~
+cp ~/debian-scripts/resources/debfetch ~/.local/bin
 
 
 sudo apt autoremove
