@@ -61,7 +61,7 @@ sudo apt install -y feh
 sudo apt install -y fonts-recommended fonts-ubuntu fonts-font-awesome fonts-terminus papirus-icon-theme
 
 # Hardware tools
-sudo apt-get install -y lm-sensors lsscsi
+sudo apt-get install -y lm-sensors lsscsi playerctl tlp
 
 # EXA installation
 # replace ls command in .bashrc file with line below
@@ -84,7 +84,7 @@ sudo apt install -y mpv scrot gimp redshift brightnessctl
 sudo apt install -y zathura zathura-ps zathura-djvu zathura-cb
 
 # Others
-sudo apt install -y numlockx figlet galculator cpu-x udns-utils whois curl tree
+sudo apt install -y numlockx figlet galculator cpu-x udns-utils whois curl tree 
 
 # Install Lightdm Console Display Manager
 sudo apt install -y lightdm lightdm-gtk-greeter-settings
