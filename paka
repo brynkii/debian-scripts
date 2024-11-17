@@ -35,7 +35,7 @@ sudo apt install -y policykit-1-gnome network-manager network-manager-gnome
 sudo apt install -y thunar thunar-archive-plugin thunar-volman file-roller
 
 # Terminal (eg. terminator,kitty,xfce4-terminal)
-sudo apt install -y kitty taskwarrior timewarrior
+sudo apt install -y kitty taskwarrior
 
 #Terminal tools
 sudo apt install -y fzf fortune zoxide tmux aptitude newsboat trash-cli ripgrep btop flameshot stow fdupes sox parallel
@@ -58,7 +58,7 @@ sudo apt install -y firefox-esr qbittorrent
 sudo apt install -y feh
 
 # Fonts and icons for now
-sudo apt install -y fonts-recommended fonts-ubuntu fonts-font-awesome fonts-terminus papirus-icon-theme
+sudo apt install -y fonts-recommended fonts-font-awesome fonts-terminus papirus-icon-theme
 
 # Hardware tools
 sudo apt-get install -y lm-sensors lsscsi playerctl tlp
@@ -84,7 +84,7 @@ sudo apt install -y mpv scrot gimp redshift brightnessctl
 sudo apt install -y zathura zathura-ps zathura-djvu zathura-cb
 
 # Others
-sudo apt install -y numlockx figlet galculator cpu-x udns-utils whois curl tree 
+sudo apt install -y figlet cpu-x udns-utils whois curl tree 
 
 # Install Lightdm Console Display Manager
 sudo apt install -y lightdm lightdm-gtk-greeter-settings
@@ -100,8 +100,8 @@ curl -sS https://starship.rs/install.sh | sh
 ## These two scripts will install nerdfonts and copy my configuration files into the ~/.config directory
 ## Configuration uses
 
-bash ~/debian-scripts/resources/nerdfonts.sh
-bash ~/debian-scripts/fastfetch.sh
+bash ~/debian-scripts/resources/nerdfonts
+bash ~/debian-scripts/fastfetch
 
 cp ~/debian-scripts/resources/debfetch ~/.local/bin
 
