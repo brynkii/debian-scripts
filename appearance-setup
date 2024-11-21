@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# install nerdfonts
+install_nerdfonts() {
+  sudo apt install unzip -y
+
+  mkdir -p ~/.local/share/fonts
+
+  cd /tmp
+  fonts=( 
+  "FiraCode"  
+  "Hack"  
+  "Inconsolata"
+  "JetBrainsMono" 
+  "Meslo"
+  )
+
+  for font in ${fonts[@]}
+  do
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/$font.zip
+	    unzip $font.zip -d $HOME/.local/share/fonts/$font/
+    rm $font.zip
+  done
+  fc-cache -vf
+}
+install_eza() {
+  if eza >/dev/null 2>&1; then
+    echo "Picom is already installed. Skipping installation."
+    exit 0
+  fi
+  sudo apt install gpg -y
+  sudo mkdir -p /etc/apt/keyrings
+  wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+  echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+  sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+  sudo apt update
+  sudo apt install -y eza
+}
+install_picom() {
+  # Clone the repository in the home/build directory
+  mkdir -p ~/repos/github/
+  if [ ! -d ~/repos/github/picom ]; then
+    if ! git clone https://github.com/FT-Labs/picom.git ~/repos/github/picom; then
+      echo "Failed to clone the repository"
+      return 1
+    fi
+  else
+    echo "Repository already exists, skipping clone"
+  fi
+
+  cd ~/repos/github/picom || { echo "Failed to change directory to picom"; return 1; }
+
+  # Build the project
+  if ! meson setup --buildtype=release build; then
+    sudo apt install picom -y
+    return 1
+  fi
+
+  if ! ninja -C build; then
+    echo "Ninja build failed"
+    return 1
+  fi
+
+  # Install the built binary
+  if ! sudo ninja -C build install; then
+    echo "Failed to install the built binary"
+    return 1
+  fi
+
+  echo "Picom animations installed successfully"
+}
+install_appearance() {
+  # Main appearance
+  sudo apt install -y lxappearance feh brightnessctl rofi dunst libnotify-bin wmctrl xdotool libnotify-dev 
+  # fonts
+  sudo apt install -y  fonts-font-awesome fonts-terminus papirus-icon-theme fonts-noto-color-emoji
+}
